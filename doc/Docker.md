@@ -24,7 +24,7 @@ docker run -it --name szz_con szz ash
 As a result, you end up in an [ash shell](https://linux.die.net/man/1/ash) that is executed inside the Docker container. From the shell, you can now run the steps required to generate the data from SZZ Unleashed. Here are the commands to run to generate bug-introducing commits for the [Jenkins project](https://github.com/jenkinsci/jenkins).
 
 ```bash
-docker run -it --name ssz_con szz ash
+docker run -it --name szz_con szz ash
 cd /root/fetch_jira_bugs
 python3 fetch.py --issue-code JENKINS --jira-project issues.jenkins-ci.org
 python3 git_log_to_array.py --repo-path ../jenkins --from-commit 02d6908ada70fcf8012833ddef628bc09c6f8389
