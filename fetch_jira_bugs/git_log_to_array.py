@@ -15,6 +15,7 @@ def git_log_to_json(init_hash, path_to_repo):
 
     logs = []
     i = 0
+    c = len(hashes)
     for hash in hashes:
         entry = subprocess.run(['git', 'show', '--quiet', '--date=iso', hash],
             cwd=path_to_repo, stdout=subprocess.PIPE)\
@@ -22,7 +23,7 @@ def git_log_to_json(init_hash, path_to_repo):
         logs.append(entry)
         i += 1
         if i % 10 == 0:
-            print(i, end='\r')
+            print("{}/{}".format(i, c), end='\r')
 
     with open('gitlog.json', 'w') as f:
         f.write(json.dumps(logs))
